@@ -2,6 +2,8 @@ plugins {
 	id 'org.springframework.boot' version '2.2.0.RELEASE'
 	id 'io.spring.dependency-management' version '1.0.8.RELEASE'
 	id 'java'
+	id 'maven'
+
 }
 
 group = 'com.github.vittico.distroless-spring'
@@ -23,3 +25,31 @@ dependencies {
 test {
 	useJUnitPlatform()
 }
+
+
+
+install {
+	repositories.mavenInstaller {
+		pom.version = '1.0Maven'
+		pom.artifactId = 'myName'
+	}
+}
+
+task writePom {
+	doLast {
+		pom {
+			project {
+				inceptionYear '2008'
+				licenses {
+					license {
+						name 'The Apache Software License, Version 2.0'
+						url 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+						distribution 'repo'
+					}
+				}
+			}
+		}.writeTo("pom.xml")
+	}
+}
+
+
