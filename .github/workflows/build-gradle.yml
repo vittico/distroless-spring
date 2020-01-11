@@ -14,4 +14,6 @@ jobs:
         with:
           java-version: 11.0.x
       - name: Download Gradle
-        run: java -version && wget -q https://services.gradle.org/distributions/gradle-6.0.1-bin.zip && unzip gradle-6.0.1-bin.zip && ls -lkah
+        run: wget -q https://services.gradle.org/distributions/gradle-6.0.1-bin.zip && unzip -qq gradle-6.0.1-bin.zip
+      - name: Gradle Build
+        run: gradle-6.0.1/bin/gradle build
